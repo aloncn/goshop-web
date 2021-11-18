@@ -66,8 +66,10 @@ export default {
      */
     _authorizedLogin() {
       const { code } = parseQueryString(window.location.href)
+      console.log('authorizedLogin', code, window.location.href)
       if (code) {
         authorizedLogin(code).then((res) => {
+          console.log('authorizedLoginRes', res)
           if (res.err_code === ERR_OK) {
             const member = res.data
             saveUser(member)
